@@ -11,7 +11,7 @@ import { Cryptocurrencies, News } from "./index";
 const { Title } = Typography;
 
 function Homepage() {
-  const { data, isFetching, error } = useGetCryptosQuery();
+  const { data, isFetching, error } = useGetCryptosQuery(10);
   console.log(data);
   console.log(error);
 
