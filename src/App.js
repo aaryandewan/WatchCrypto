@@ -1,22 +1,65 @@
 import React from "react";
-import store from "./redux/store";
+import { Switch, Route, Link } from "react-router-dom";
+import { Layout, Typography, Space } from "antd";
 
-import { Provider } from "react-redux";
+import {
+  Exchanges,
+  Homepage,
+  News,
+  Cryptocurrencies,
+  CryptoDetails,
+  Navbar,
+} from "./components";
+// import { Navbar } from "./components";
+import "./App.css";
 
-import HooksCakeContainer from "./components/HooksCakeContainer";
-import CakeContainer from "./components/cakeContainer";
-import NewCakeContainer from "./components/NewCakeContainer";
-
-function App() {
-  return (
-    <Provider store={store}>
-      <div>
-        {/* <HooksCakeContainer /> */}
-        <NewCakeContainer />
-        {/* <CakeContainer /> */}
+const App = () => (
+  <div className="app">
+    <div>
+      <h1>Hello</h1>
+    </div>
+    <div className="navbar">
+      <Navbar />
+    </div>
+    <div className="main">
+      <Layout>
+        <div className="routes">
+          <Switch>
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+            <Route exact path="/exchanges">
+              <Exchanges />
+            </Route>
+            <Route exact path="/cryptocurrencies">
+              <Cryptocurrencies />
+            </Route>
+            <Route exact path="/crypto/:coinId">
+              <CryptoDetails />
+            </Route>
+            <Route exact path="/news">
+              <News />
+            </Route>
+          </Switch>
+        </div>
+      </Layout>
+      <div className="footer">
+        <Typography.Title
+          level={5}
+          style={{ color: "white", textAlign: "center" }}
+        >
+          Copyright © 2021
+          <Link to="/">Cryptoverse Inc.</Link> <br />
+          All Rights Reserved.
+        </Typography.Title>
+        <Space>
+          <Link to="/">Home</Link>
+          <Link to="/exchanges">Exchanges</Link>
+          <Link to="/news">News</Link>
+        </Space>
       </div>
-    </Provider>
-  );
-}
+    </div>
+  </div>
+);
 
 export default App;
