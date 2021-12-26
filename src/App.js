@@ -15,9 +15,6 @@ import "./App.css";
 
 const App = () => (
   <div className="app">
-    <div>
-      <h1>Hello</h1>
-    </div>
     <div className="navbar">
       <Navbar />
     </div>
